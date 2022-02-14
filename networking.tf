@@ -6,7 +6,7 @@ module "vpc" {
   name                         = "${var.name}-vpc"
   tags                         = var.tags
   source                       = "terraform-aws-modules/vpc/aws"
-  version                      = "2.33.0"
+  #version                      = "2.33.0"
 }
 
 resource "aws_security_group" "this" {
