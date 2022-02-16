@@ -32,7 +32,7 @@ resource "aws_rds_cluster" "default" {
     content {
       auto_pause               = lookup(scaling_configuration.value, "auto_pause", null)
       max_capacity             = lookup(scaling_configuration.value, "max_capacity", null)
-      min_capacity             = 2
+      min_capacity             = lookup(scaling_configuration.value, "min_capacity", null)
       seconds_until_auto_pause = lookup(scaling_configuration.value, "seconds_until_auto_pause", null)
       timeout_action           = lookup(scaling_configuration.value, "timeout_action", null)
     }
