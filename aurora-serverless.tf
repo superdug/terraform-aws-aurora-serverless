@@ -24,6 +24,7 @@ resource "aws_rds_cluster" "default" {
   preferred_backup_window             = var.preferred_backup_window
   preferred_maintenance_window        = var.preferred_maintenance_window
   replication_source_identifier       = var.replication_source_identifier
+  min_capacity                        = 2
 
   dynamic "scaling_configuration" {
     for_each = length(keys(var.scaling_configuration)) == 0 ? [] : [
