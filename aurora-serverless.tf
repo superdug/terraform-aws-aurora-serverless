@@ -24,7 +24,6 @@ resource "aws_rds_cluster" "default" {
   preferred_backup_window             = var.preferred_backup_window
   preferred_maintenance_window        = var.preferred_maintenance_window
   replication_source_identifier       = var.replication_source_identifier
-  min_capacity                        = 2
 
   dynamic "scaling_configuration" {
     for_each = length(keys(var.scaling_configuration)) == 0 ? [] : [
@@ -33,7 +32,7 @@ resource "aws_rds_cluster" "default" {
     content {
       auto_pause               = lookup(scaling_configuration.value, "auto_pause", null)
       max_capacity             = lookup(scaling_configuration.value, "max_capacity", null)
-      min_capacity             = lookup(scaling_configuration.value, "min_capacity", null)
+      min_capacity             = 2
       seconds_until_auto_pause = lookup(scaling_configuration.value, "seconds_until_auto_pause", null)
       timeout_action           = lookup(scaling_configuration.value, "timeout_action", null)
     }
